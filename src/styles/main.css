@@ -19,6 +19,14 @@ body {
     align-items: center;
 }
 
+/** D3 */
+circle {
+    fill: #ffab00;
+    stroke: #fff;
+    stroke-width: 2px;
+    background-color: chartreuse;
+}
+
 .mini-map {
     margin-top: 20px;
     border: 1px solid #ccc;
