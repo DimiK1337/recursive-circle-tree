@@ -6,10 +6,10 @@ import treeData from "./data/sampleTree.json";
 const App = () => {
   return (
     <div className="app-container">
-      <h1>Recursive Circle Tree Navigation</h1>
+      <MiniMap data={treeData} />
       <div className="main-content">
+        <h1>Recursive Circle Tree Navigation</h1>
         <CircleTree data={treeData} />
-        <MiniMap />
       </div>
     </div>
   );

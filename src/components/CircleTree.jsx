@@ -3,6 +3,7 @@ import Graph from "./Graph";
 
 const CircleTree = ({ data }) => {
     const [graphData, setGraphData] = useState({ nodes: [], links: [] });
+    const circleRadius = 30; // Define the circle radius
 
     useEffect(() => {
         console.log("CircleTree data:", data); // Log the data to see if it is being passed correctly
@@ -10,13 +11,14 @@ const CircleTree = ({ data }) => {
         const nodes = [];
         const links = [];
 
-        function traverse(node, parent = null) {
+        function traverse(node, parent = null, depth = 0) {
             console.log("Traversing node:", node); // Log each node being traversed
             nodes.push({
                 id: node.name,
                 name: node.name,
-                size: 30,
-                color: "#ffab00"
+                size: circleRadius,
+                color: "#ffab00",
+                depth: depth
             });
 
             if (parent) {
@@ -28,7 +30,7 @@ const CircleTree = ({ data }) => {
             }
 
             if (node.children) {
-                node.children.forEach(child => traverse(child, node));
+                node.children.forEach(child => traverse(child, node, depth + 1));
             }
         }
 
@@ -38,7 +40,7 @@ const CircleTree = ({ data }) => {
         setGraphData({ nodes, links });
     }, [data]);
 
-    return <Graph data={graphData} />;
+    return graphData.nodes.length > 0 ? <Graph data={graphData} circleRadius={circleRadius} /> : null;
 };
 
 export default CircleTree;

@@ -3,20 +3,24 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
     min-height: 100vh;
     background-color: #f9f9f9;
 }
 
 .app-container {
     text-align: center;
+    display: flex;
+    width: 100%;
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1; /* Allow the main content to grow */
+    margin-left: 220px; /* Adjust the margin to make space for the mini-map */
 }
 
 /** D3 */
@@ -28,9 +32,21 @@ circle {
 }
 
 .mini-map {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
     width: 200px;
     background-color: #fff;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.mini-map-node {
+    margin-bottom: 5px;
+}
+
+#root {
+    width: calc(100% - 220px); /* Adjust the width to make space for the mini-map */
 }
